@@ -1,9 +1,17 @@
 # pi-approximator
 
-This is a mini app built using vanilla html, css, and JavaScript that approximates pi using random values. It works using some simple algebra and intuition.
+View the project here: https://vnhns.github.io/pi-approximator/
 
-We start with a ratio. We can find the area of a circle using pi(r^2) and the area of a square using (2*r)^2. Assuming we are working on a unit circle, we simply find that the area of the circle is pi and the area of the square is 4. Now, let us begin randomly placing points in a square of sidelength 1. All the point that fall before the circle's perimeter will constitute its area. All  points plotted will constitute the square's area. We can now set our ration of pi : 4 equal to num points in circle : total points.
+This is a mini app built using vanilla JavaScript, HTML, and CSS. It approximates pi using randomly placed points on a circle of radius r and a square of sidelength 2*r. The intuition behind this is simple but perhaps not so obvious. Here's how it works.
 
-We find that we can approximate pi as 4 * (num points in circle) / total points.
+Let's start with a ratio. We need to compare the area of the circle to the area of the square. Luckily, we should know the formulas for this...
 
-https://vnhns.github.io/pi-approximator/
+$$\dfrac{\pi r^2}{(2r)^2}$$
+
+Ideally, we would create an equation in which we could solve for pi. This is where the random points come in. By randomly placing points on the circle and square, we can approximate their areas by summing the number of points in each shape. This gives use a second ratio.
+
+$$\dfrac{points_circle}{points_square}$$
+
+All we need now is some simple algebra and we find that we can approximate pi as follows:
+
+$$\pi \approx \dfrac{4 * points_circle}{points_square}$$
