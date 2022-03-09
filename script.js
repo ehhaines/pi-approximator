@@ -45,5 +45,44 @@ function drawSquare(side_length) {
   drawLine(x_center - radius, y_center - radius, x_center + radius, y_center - radius)
 }
 
+function drawPoint(x_coor, y_coor) {
+  ctx.beginPath();
+  start_x = (width / 2) + x_coor;
+  start_y = (height / 2) + y_coor;
+  ctx.moveTo(start_x, start_y);
+  ctx.lineTo(start_x + 1, start_y + 1);
+  ctx.stroke();
+}
+
+function findPi(num_points) {
+  let r_width = width / 2.5;
+  let r_height = height / 2.5;
+  let radius = width > height ? r_height : r_width;
+
+  let count = 0;
+  let red = 0;
+  let green = 0;
+
+  while (count < num_points) {
+    let x = (Math.random() * 2 - 1) * radius;
+    let y = (Math.random() * 2 - 1) * radius;
+    if (Math.sqrt(x*x + y*y) <= radius) {
+      ctx.strokeStyle = 'rgb(50, 255, 50)';
+      green++;
+    }
+    else {
+      ctx.strokeStyle = 'rgb(255, 50, 50)';
+      red++;
+    }
+    drawPoint(x, y);
+    count++;
+  }
+  let pi = 4 * green / count
+  console.log(pi);
+  return pi;
+}
+
 drawCircle();
 drawSquare();
+
+findPi(10000);
